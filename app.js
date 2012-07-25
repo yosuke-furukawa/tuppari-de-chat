@@ -7,7 +7,8 @@ var express = require('express')
 , routes = require('./routes')
 , http = require('http')
 , Tuppari = require('tuppari')
-, keys = require('./keys');
+, keys = require('./keys')
+, sanitize = require('validator').sanitize;
 var app = express();
 
 var tuppari = new Tuppari(keys);
@@ -32,8 +33,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 
 app.get('/chat', function(req, res){
-    var message = req.query.message;
-    console.log(message);
+    var message = sanitize(req.query.message).entityEncode();
     if (message) {
         channel.send('your_event', message, function (err, res, body) {
             if (err) {

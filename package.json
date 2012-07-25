@@ -8,6 +8,7 @@
   "dependencies": {
     "express": "*",
     "tuppari": "*",
-    "jade": "*"
+    "jade": "*",
+    "validator": "*"
   }
 }
