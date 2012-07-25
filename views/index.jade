@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  form(id='form')
+    input(type='text', name='message', id='message')
+    button(type='submit', onClick="chat();") chat
+  hr
+  dl(id='list')
